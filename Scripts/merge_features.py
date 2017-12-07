@@ -70,5 +70,10 @@ print 'Total supplementary datapoints: ', len(fi_data.index)
 # join both datasets
 data = bc_data.join(fi_data, on='Date', how='inner', lsuffix='', rsuffix='_r')
 data = data.drop(columns=['Date_r', '', 'Date'])
+
+delta = data['Open'] - data['Close']
+data['delta_raw'] = delta
+data['delta_flg'] = (delta > 0).astype('int')
+
 data.to_csv(path_or_buf='../Data/aligned_ftrs_exchange_rows.dat', sep=',', 
             columns = data.columns.values, header=True, index=True) 
