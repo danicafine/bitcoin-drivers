@@ -69,7 +69,8 @@ print 'Total supplementary datapoints: ', len(fi_data.index)
 
 # join both datasets
 data = bc_data.join(fi_data, on='Date', how='inner', lsuffix='', rsuffix='_r')
-data = data.drop(columns=['Date_r', '', 'Date'])
+#data = data.drop(columns=['Date_r', '', 'Date'])
+data = data.drop(columns=['Date_r', 'Date'])
 
 delta = data['Open'] - data['Close']
 data['delta_raw'] = delta
