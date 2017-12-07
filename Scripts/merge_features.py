@@ -76,4 +76,4 @@ data['delta_raw'] = delta
 data['delta_flg'] = (delta > 0).astype('int')
 
 data.to_csv(path_or_buf='../Data/aligned_ftrs_exchange_rows_nodate.dat', sep=',', 
-            columns = data.columns.values, header=True) #, index=True) 
+            columns = data.columns.values, header=True, index=False) #, index=True) 
